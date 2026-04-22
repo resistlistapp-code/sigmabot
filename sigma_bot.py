@@ -6,7 +6,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 # --- !!! IMPORTANT: PASTE YOUR BOT TOKEN HERE !!! ---
 # You can get this from BotFather. It will look like '1234567890:ABCdefGHIjklMNOpqrsTUVwxyz'
-BOT_TOKEN = "8675951981:AAE9cqS1kYfdjA7OdeUoQREfLW6bE8l2y4A"
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 # --- Enable logging to see what your bot is doing ---
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
