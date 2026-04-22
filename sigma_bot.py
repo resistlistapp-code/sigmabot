@@ -5,6 +5,23 @@ import random
 from datetime import datetime
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+from flask import Flask
+from threading import Thread
+
+# --- Create a simple web app for Render's health checks ---
+web_app = Flask(__name__)
+
+@web_app.route('/')
+@web_app.route('/health')
+def health_check():
+    return "OK", 200
+
+def run_web():
+    web_app.run(host='0.0.0.0', port=10000)
+
+# Start the web server in a background thread
+Thread(target=run_web, daemon=True).start()
+# --- End of health check addition ---
 
 # --- Read token from environment variable (for Render deployment) ---
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
